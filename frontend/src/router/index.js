@@ -7,6 +7,11 @@ const routes = [
     component: () => import('../views/LoginView.vue'),
     meta: { public: true },
   },
+  {
+    path: '/registro',
+    component: () => import('../views/RegisterView.vue'),
+    meta: { public: true },
+  },
   { path: '/', component: () => import('../views/DashboardView.vue') },
   { path: '/livros', component: () => import('../views/BooksView.vue') },
   { path: '/emprestimos', component: () => import('../views/LoansView.vue') },
