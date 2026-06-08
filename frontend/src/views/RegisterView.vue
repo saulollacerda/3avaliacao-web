@@ -2,19 +2,19 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import api from '../services/api'
+import { useAuthStore } from '../stores/auth'
 
 const email = ref('')
 const password = ref('')
 const confirm = ref('')
 const error = ref('')
-const success = ref('')
 const loading = ref(false)
 
 const router = useRouter()
+const auth = useAuthStore()
 
 async function handleRegister() {
   error.value = ''
-  success.value = ''
   if (password.value !== confirm.value) {
     error.value = 'As senhas não coincidem.'
     return
@@ -22,7 +22,8 @@ async function handleRegister() {
   loading.value = true
   try {
     await api.post('/api/auth/register', { email: email.value, password: password.value })
-    success.value = 'Conta criada! Verifique seu e-mail e faça login.'
+    await auth.login(email.value, password.value)
+    router.push('/')
   } catch (e) {
     error.value = e.response?.data?.error ?? 'Erro ao criar conta.'
   } finally {
@@ -59,9 +60,6 @@ async function handleRegister() {
 
         <p v-if="error" class="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg px-3 py-2">
           {{ error }}
-        </p>
-        <p v-if="success" class="text-green-700 text-sm bg-green-50 border border-green-200 rounded-lg px-3 py-2">
-          {{ success }}
         </p>
 
         <button type="submit" :disabled="loading"
