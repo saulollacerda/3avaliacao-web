@@ -29,6 +29,27 @@ Permitir que bibliotecários gerenciem o acervo de livros e os empréstimos real
 - **Dashboard** — cards de estatísticas: total de livros, disponíveis, empréstimos ativos, devoluções do dia
 - **Filtros** — filtrar empréstimos por status (todos / ativos / devolvidos)
 
+## Telas do projeto
+
+<table>
+  <tr>
+    <th width="50%">Login</th>
+    <th width="50%">Dashboard</th>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/login.png" alt="Tela de login" width="100%"></td>
+    <td><img src="docs/screenshots/dashboard.png" alt="Dashboard" width="100%"></td>
+  </tr>
+  <tr>
+    <th width="50%">Transações</th>
+    <th width="50%">Categorias</th>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/transactions.png" alt="Tela de transações" width="100%"></td>
+    <td><img src="docs/screenshots/categories.png" alt="Tela de categorias" width="100%"></td>
+  </tr>
+</table>
+
 ## Estrutura do Projeto
 
 ```
