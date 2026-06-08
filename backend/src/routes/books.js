@@ -13,12 +13,24 @@ router.get('/', async (req, res) => {
   res.json(data)
 })
 
+function sanitizeBook({ title, author, isbn, genre, year, total_quantity, available_quantity }) {
+  return {
+    title,
+    author,
+    isbn: isbn || null,
+    genre: genre || null,
+    year: year !== '' && year != null ? Number(year) : null,
+    total_quantity: total_quantity !== '' && total_quantity != null ? Number(total_quantity) : 1,
+    ...(available_quantity != null ? { available_quantity: Number(available_quantity) } : {}),
+  }
+}
+
 router.post('/', async (req, res) => {
-  const { title, author, isbn, genre, year, total_quantity } = req.body
-  const qty = Number(total_quantity) || 1
+  const book = sanitizeBook(req.body)
+  book.available_quantity = book.total_quantity
   const { data, error } = await supabase
     .from('books')
-    .insert({ title, author, isbn, genre, year, total_quantity: qty, available_quantity: qty })
+    .insert(book)
     .select()
     .single()
   if (error) return res.status(500).json({ error: error.message })
@@ -26,10 +38,10 @@ router.post('/', async (req, res) => {
 })
 
 router.put('/:id', async (req, res) => {
-  const { title, author, isbn, genre, year, total_quantity, available_quantity } = req.body
+  const book = sanitizeBook(req.body)
   const { data, error } = await supabase
     .from('books')
-    .update({ title, author, isbn, genre, year, total_quantity, available_quantity })
+    .update(book)
     .eq('id', req.params.id)
     .select()
     .single()
