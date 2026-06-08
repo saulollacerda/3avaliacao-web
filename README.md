@@ -37,16 +37,16 @@ Permitir que bibliotecários gerenciem o acervo de livros e os empréstimos real
     <th width="50%">Dashboard</th>
   </tr>
   <tr>
-    <td><img src="docs/screenshots/login.png" alt="Tela de login" width="100%"></td>
-    <td><img src="docs/screenshots/dashboard.png" alt="Dashboard" width="100%"></td>
+    <td><img src="docs/login.png" alt="Tela de login" width="100%"></td>
+    <td><img src="docs/dashboard.png" alt="Dashboard" width="100%"></td>
   </tr>
   <tr>
-    <th width="50%">Transações</th>
-    <th width="50%">Categorias</th>
+    <th width="50%">Livros</th>
+    <th width="50%">Emprestimos</th>
   </tr>
   <tr>
-    <td><img src="docs/screenshots/transactions.png" alt="Tela de transações" width="100%"></td>
-    <td><img src="docs/screenshots/categories.png" alt="Tela de categorias" width="100%"></td>
+    <td><img src="docs/livros.png" alt="Tela de transações" width="100%"></td>
+    <td><img src="docs/emprestimos.png" alt="Tela de categorias" width="100%"></td>
   </tr>
 </table>
 
